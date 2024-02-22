@@ -20,12 +20,12 @@ packages="
 #	texlive-scheme-full
 
 flatpaks="
-	spotify
-	obsidian.Obsidian
+	com.spotify.Client
+	md.obsidian.Obsidian
 "
 
 # dnf
-echo "
+sudo echo "
 # custom
 fastestmirror=True
 max_parallel_downloads=20
