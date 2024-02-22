@@ -33,10 +33,19 @@ flatpaks="
 
 # dnf
 echo "
+# see `man dnf.conf` for defaults and possible options
+
+[main]
+gpgcheck=True
+installonly_limit=3
+clean_requirements_on_remove=True
+best=False
+skip_if_unavailable=True
+
 # custom
 fastestmirror=True
 max_parallel_downloads=20
-" >> /etc/dnf/dnf.conf
+" > /etc/dnf/dnf.conf
 
 # mirrors
 dnf install -y $mirrors
