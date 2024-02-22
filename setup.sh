@@ -24,12 +24,19 @@ flatpaks="
 	obsidian
 "
 
+# dnf
+echo "
+# custom
+fastestmirror=True
+max_parallel_downloads=20
+" >> /etc/dnf/dnf.conf
+
 # mirrors
 sudo dnf install -y $mirrors
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 sudo dnf config-manager --disable google-chrome
-sudo dnf copr --disable phracek/PyCharm
+sudo dnf copr disable phracek/PyCharm
 sudo dnf groupupdate -y core
 
 # packages
