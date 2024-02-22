@@ -1,0 +1,23 @@
+alias c="clear"
+alias la="colorls --group-directories-first -lAh"
+alias cla="c && la"
+alias lag="la | grep "
+alias dnfs="dnf search "
+alias dnfl="dnf list "
+alias dnfi="sudo dnf install "
+alias dnfr="sudo dnf remove "
+alias dnfu="sudo dnf upgrade && flatpak upgrade"
+alias dnfur="sudo dnf upgrade --refresh && flatpak upgrade"
+alias s=dnfs
+alias i=dnfi
+alias r=dnfr
+alias u=dnfur
+alias clipboard="xclip -selection clipboard"
+alias shutdown="shutdown 0"
+alias vi="nvim"
+alias vim="vi"
+alias open="xdg-open"
+alias expand-tmp="sudo mount -o remount,size=10G,noatime /tmp"
+alias cclip="xclip -rmlastnl -selection clipboard"
+alias pclip="xclip -out -selection clipboard"
+alias oh-my-posh-update="curl -s https://ohmyposh.dev/install.sh | sudo bash -s"
