@@ -38,7 +38,6 @@ fastestmirror=True
 max_parallel_downloads=20
 " >> /etc/dnf/dnf.conf
 
-exit
 # mirrors
 dnf install -y $mirrors
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
