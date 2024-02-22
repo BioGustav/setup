@@ -52,11 +52,15 @@ tar -xzf /tmp/jetbrains-toolbox.tar.gz --directory=/tmp
 /tmp/jetbrains*/jetbrains-toolbox
 rm -r /tmp/jetbrains*
 
+# fonts
+wget -cO /tmp/CodeNewRoman.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/CodeNewRoman.zip
+unzip /tmp/CodeNewRoman.zip -x README.md license.txt -d ~/.local/share/fonts
+rm -r /tmp/CodeNewRoman*
 
 # zsh
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
-cp --parents ./poshthemes/* ~/.posthemes/
+cp ./poshthemes/* ~/.poshthemes/
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
