@@ -1,5 +1,12 @@
 #!/bin/sh
 
+if (( $EUID != 0 )); then
+  echo "Please run as root"
+  exit 1
+else
+  echo "I am ROOOOOT"
+fi
+
 mirrors="
 	fedora-workstation-repositories
 	https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
@@ -25,24 +32,25 @@ flatpaks="
 "
 
 # dnf
-sudo echo "
+echo "
 # custom
 fastestmirror=True
 max_parallel_downloads=20
 " >> /etc/dnf/dnf.conf
 
+exit
 # mirrors
-sudo dnf install -y $mirrors
-sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+dnf install -y $mirrors
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-sudo dnf config-manager --disable google-chrome
-sudo dnf copr disable phracek/PyCharm
-sudo dnf groupupdate -y core
+dnf config-manager --disable google-chrome
+dnf copr disable phracek/PyCharm
+dnf groupupdate -y core
 
 # packages
-sudo dnf update -y --refresh
-sudo dnf install -y $packages
+dnf update -y --refresh
+dnf install -y $packages
 
 flatpak update
 flatpak install -y $flatpaks
@@ -70,6 +78,6 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM
 cp ./zshrc ~/.zshrc
 cp ./aliases ~/.config/
 
-curl -s https://ohmyposh.dev/install.sh | sudo bash -s
+curl -s https://ohmyposh.dev/install.sh | bash -s
 
 read -p "Press any key to resume ..."
