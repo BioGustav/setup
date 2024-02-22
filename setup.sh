@@ -35,6 +35,7 @@ max_parallel_downloads=20
 sudo dnf install -y $mirrors
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo dnf config-manager --disable google-chrome
 sudo dnf copr disable phracek/PyCharm
 sudo dnf groupupdate -y core
@@ -43,6 +44,7 @@ sudo dnf groupupdate -y core
 sudo dnf update -y --refresh
 sudo dnf install -y $packages
 
+flatpak update
 flatpak install -y $flatpaks
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
