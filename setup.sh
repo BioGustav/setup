@@ -53,7 +53,7 @@ dnf install -y $packages
 
 flatpak update
 flatpak install -y $flatpaks
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sh -c "$(wget https://sh.rustup.rs -O -)" -- -y
 
 # JetBrains toolbox
 wget -cO /tmp/jetbrains-toolbox.tar.gz "https://data.services.jetbrains.com/products/download?platform=linux&code=TBA"
@@ -67,7 +67,7 @@ unzip /tmp/CodeNewRoman.zip -x README.md license.txt -d ~/.local/share/fonts
 rm -r /tmp/CodeNewRoman*
 
 # zsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -n -)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" -- --unattended
 
 cp ./poshthemes/* ~/.poshthemes/
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -78,5 +78,7 @@ cp ./zshrc ~/.zshrc
 cp ./aliases ~/.config/
 
 curl -s https://ohmyposh.dev/install.sh | bash -s
+
+chsh -s $(which zsh)
 
 read -p "Press any key to resume ..."
