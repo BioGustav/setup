@@ -55,7 +55,6 @@ rm -r /tmp/jetbrains*
 
 # zsh
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
-curl -s https://ohmyposh.dev/install.sh | sudo bash -s
 
 cp --parents ./poshthemes/* ~/.posthemes/
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -65,6 +64,6 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM
 cp ./zshrc ~/.zshrc
 cp ./aliases ~/.config/
 
-chsh -s $(which zsh)
+curl -s https://ohmyposh.dev/install.sh | sudo bash -s
 
 read -p "Press any key to resume ..."
