@@ -32,10 +32,7 @@ flatpaks="
 "
 
 # dnf
-echo "
-# see `man dnf.conf` for defaults and possible options
-
-[main]
+echo "[main]
 gpgcheck=True
 installonly_limit=3
 clean_requirements_on_remove=True
