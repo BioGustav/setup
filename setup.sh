@@ -21,7 +21,7 @@ packages="
 
 flatpaks="
 	spotify
-	obsidian
+	obsidian.Obsidian
 "
 
 # dnf
@@ -60,7 +60,7 @@ unzip /tmp/CodeNewRoman.zip -x README.md license.txt -d ~/.local/share/fonts
 rm -r /tmp/CodeNewRoman*
 
 # zsh
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -n -)"
 
 cp ./poshthemes/* ~/.poshthemes/
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
