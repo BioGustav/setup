@@ -83,9 +83,9 @@ dnf config-manager --add-repo $repos
 dnf groupupdate -y core
 
 # packages
+dnf install -y $packages
 dnf remove -y $removed_packages
 dnf update -y --refresh
-dnf install -y $packages
 
 
 flatpak update
