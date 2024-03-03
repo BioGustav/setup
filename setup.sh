@@ -19,7 +19,6 @@ repos="
 "
 
 packages="
-	antigen
 	btop
 	code
 	discord
@@ -38,13 +37,13 @@ packages="
 "
 #	texlive-scheme-full
 
-removed_packages="
+remove_packages="
 	cheese
 	gnome-boxes
 	gnome-maps
 	gnome-tour
 	gnome-weather
-	libreoffice
+	libreoffice-*
 	rhythmbox
 	simple-scan
 	totem
@@ -83,14 +82,14 @@ dnf config-manager --add-repo $repos
 dnf groupupdate -y core
 
 # packages
-dnf install -y $packages
-dnf remove -y $removed_packages
+dnf remove -y $remove_packages
 dnf update -y --refresh
+dnf install -y $packages
 
 
 flatpak update
 flatpak install -y $flatpaks
-sh -c "$(wget https://sh.rustup.rs -O -)" -- -y
+sudo -u $SUDO_USER sh -c "wget -qO- https://sh.rustup.rs | sh -s -- -y"
 
 # JetBrains toolbox
 (
@@ -108,9 +107,12 @@ rm -r /tmp/CodeNewRoman*
 )&
 
 wait
+
 # zsh
+sudo -u $SUDO_USER sh -c "wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --unattended"
 curl -s https://ohmyposh.dev/install.sh | bash -s
-cp ./themes/* /home/$SUDO_USER/.themes/ &
+curl -sL git.io/antigen > /usr/local/bin/antigen.zsh &
+cp -r ./themes /home/$SUDO_USER/.config/ &
 cp ./zshrc /home/$SUDO_USER/.zshrc &
 cp ./aliases /home/$SUDO_USER/.config/ &
 
