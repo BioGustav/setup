@@ -83,10 +83,10 @@ dnf copr disable phracek/PyCharm
 dnf groupupdate -y core
 
 # packages
+dnf remove -y $removed_packages
 dnf update -y --refresh
 dnf install -y $packages
 
-dnf remove -y $removed_packages
 
 flatpak update
 flatpak install -y $flatpaks
