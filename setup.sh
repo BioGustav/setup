@@ -117,6 +117,6 @@ cp ./zshrc /home/$SUDO_USER/.zshrc &
 cp ./aliases /home/$SUDO_USER/.config/ &
 
 wait 
-sudo -u $SUDO_USER chsh -s $(which zsh)
+chsh -s $(which zsh) $SUDO_USER
 
 read -p "Press any key to resume ..."
