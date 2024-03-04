@@ -26,10 +26,11 @@ packages="
 	gh
 	git
 	java-latest-openjdk
-	neofetch
 	micro
 	mupdf
 	mpv
+	neofetch
+	obs-studio
 	tldr
 	virt-manager
 	xclip
@@ -43,7 +44,17 @@ remove_packages="
 	gnome-maps
 	gnome-tour
 	gnome-weather
+	elisa-player
 	libreoffice-*
+	kaddressbook
+	kamaso
+	kmahjongg
+	kmines
+	kmail
+	kpat
+	kolourpaint
+	konversation
+	korganizer
 	rhythmbox
 	simple-scan
 	totem
@@ -67,7 +78,6 @@ best=False
 skip_if_unavailable=True
 
 # custom
-fastestmirror=True
 max_parallel_downloads=20
 " > /etc/dnf/dnf.conf
 
