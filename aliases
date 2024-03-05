@@ -1,8 +1,8 @@
 alias c="clear"
-alias dnfs="dnf search "
-alias dnfl="dnf list "
-alias dnfi="sudo dnf install "
-alias dnfr="sudo dnf remove "
+alias dnfs="dnf search"
+alias dnfl="dnf list"
+alias dnfi="sudo dnf install"
+alias dnfr="sudo dnf remove"
 alias dnfu="sudo dnf upgrade && flatpak upgrade"
 alias dnfur="sudo dnf upgrade --refresh && flatpak upgrade"
 alias s=dnfs
