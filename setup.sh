@@ -26,11 +26,13 @@ packages="
 	gh
 	git
 	java-latest-openjdk
+	mangohud
 	micro
 	mupdf
 	mpv
 	neofetch
 	obs-studio
+	steam
 	tldr
 	virt-manager
 	xclip
@@ -39,7 +41,9 @@ packages="
 #	texlive-scheme-full
 
 remove_packages="
+	akregator
 	cheese
+	dragon
 	gnome-boxes
 	gnome-maps
 	gnome-tour
