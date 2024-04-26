@@ -1,4 +1,5 @@
 alias c="clear"
+alias cat="bat"
 alias dnfs="dnf search"
 alias dnfl="dnf list"
 alias dnfi="sudo dnf install"
