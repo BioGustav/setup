@@ -100,7 +100,12 @@ sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.micros
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 dnf config-manager --disable google-chrome
 dnf copr disable phracek/PyCharm
-dnf config-manager --add-repo $repos
+
+for repo in $repos
+do
+	dnf config-manager --add-repo $repo
+done
+
 dnf groupupdate -y core
 
 # packages
