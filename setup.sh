@@ -31,17 +31,20 @@ packages="
 	btop
 	code
 	dnf-plugins-core
+	evince
 	firefox
 	gcc
 	gh
 	git
 	java-latest-openjdk
+	kate
 	mangohud
 	micro
 	mupdf
 	mpv
 	neofetch
 	obs-studio
+	pdfarranger
 	speedtest-cli
 	steam
 	tldr
@@ -83,6 +86,8 @@ flatpaks="
 	com.github.tchx84.Flatseal
 	com.spotify.Client
 	md.obsidian.Obsidian
+	net.davidotek.pupgui2
+	org.mozilla.Thunderbird
 	org.onlyoffice.desktopeditors
 	org.signal.Signal
 "
