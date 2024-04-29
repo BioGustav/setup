@@ -4,7 +4,7 @@ if (( $EUID != 0 )); then
   echo "Please run as root"
   exit 1
 else
-  echo "I am ROOOOOT"
+  echo "Running as root"
 fi
 
 # config
@@ -92,12 +92,20 @@ flatpaks="
 	org.signal.Signal
 "
 
+# fonts: https://www.nerdfonts.com/font-downloads
+fonts="
+	CodeNewRoman
+	RobotoMono
+"
+
+echo "\nSetting up dnf!"
 # dnf
 echo "
 # custom
 max_parallel_downloads=20
 " >> /etc/dnf/dnf.conf
 
+echo
 # mirrors
 dnf install -y $mirrors
 rpm --import $ascs
@@ -113,48 +121,70 @@ done
 
 dnf groupupdate -y core
 
+
 # packages
+echo "\nSetting up: rpm packages"
 dnf remove -y $remove_packages
 dnf update -y --refresh
 dnf install -y $packages
 
 
+echo "\nSetting up: flatpak packages"
 flatpak update -y
 flatpak install -y $flatpaks
+
+echo "\nSetting up: rust-lang"
 sudo -u $SUDO_USER sh -c "wget -qO- https://sh.rustup.rs | sh -s -- -y"
 
+echo ""
 # Ryujinx - just download latest version and extract
 (
 ryujinx_folder="/home/$SUDO_USER/Downloads/ryujinx"
+echo "Downloading: Ryujinx"
 wget -cqO /tmp/ryujinx.tar.gz $(
-	curl https://api.github.com/repos/Ryujinx/release-channel-master/releases \
+	curl -s https://api.github.com/repos/Ryujinx/release-channel-master/releases \
 	| jq -r '.[0].assets[].browser_download_url' \
-	| grep -E "/ryujinx-[0-9.]*-linux_x64.tar.gz" \
+	| grep -E "/ryujinx-[0-9.]*-linux_x64.tar.gz"
 )
 sudo -u $SUDO_USER mkdir -p $ryujinx_folder
+echo "Unpacking Ryujinx to: $ryujinx_folder"
 sudo -u $SUDO_USER tar -xzf /tmp/ryujinx.tar.gz --directory=$ryujinx_folder
 rm /tmp/ryujinx.tar.gz
 )&
 
 # JetBrains toolbox
 (
+echo "Downloading: jetbrains-toolbox"
 wget -cqO /tmp/jetbrains-toolbox.tar.gz "https://data.services.jetbrains.com/products/download?platform=linux&code=TBA"
+echo "Extracting: jetbrains-toolbox"
 tar -xzf /tmp/jetbrains-toolbox.tar.gz --directory=/tmp
+echo "Running: jetbrains-toolbox"
 sudo -u $SUDO_USER /tmp/jetbrains*/jetbrains-toolbox
 rm -r /tmp/jetbrains*
 )&
 
 # fonts
-(
-wget -cqO /tmp/CodeNewRoman.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/CodeNewRoman.zip
-unzip -q /tmp/CodeNewRoman.zip -x README.md license.txt -d /home/$SUDO_USER/.local/share/fonts
-rm -r /tmp/CodeNewRoman*
-)&
+echo "Installing fonts!"
+font_folder="/home/$SUDO_USER/.local/share/fonts/"
+for font in $fonts
+do
+	(
+	echo "Downloading font: $font"
+	wget -cqO /tmp/$font.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$font.zip
+	sudo -u $SUDO_USER mkdir -p $font_folder/$font
+	echo "Unpacking font: $font"
+	unzip -C /tmp/$font.zip -x readme* license* -d $font_folder/$font
+	rm -r /tmp/$font*
+	)&
+done
+
 
 wait
 
 # zsh
+echo "Installing: oh-my-zsh"
 sudo -u $SUDO_USER sh -c "wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- --unattended"
+echo "Installing: oh-my-posh"
 curl -s https://ohmyposh.dev/install.sh | bash -s
 curl -sL git.io/antigen > /usr/local/bin/antigen.zsh &
 cp -r ./themes /home/$SUDO_USER/.config/ &
@@ -162,6 +192,7 @@ cp ./zshrc /home/$SUDO_USER/.zshrc &
 cp ./aliases /home/$SUDO_USER/.config/ &
 
 wait 
+echo "Setting up zsh as standard shell"
 chsh -s $(which zsh) $SUDO_USER
 
 read -p "Press any key to resume ..."
