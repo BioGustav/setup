@@ -98,7 +98,8 @@ fonts="
 	RobotoMono
 "
 
-echo "\nSetting up dnf!"
+echo
+echo "Setting up dnf!"
 # dnf
 echo "
 # custom
@@ -123,20 +124,22 @@ dnf groupupdate -y core
 
 
 # packages
-echo "\nSetting up: rpm packages"
+echo
+echo "Setting up: rpm packages"
 dnf remove -y $remove_packages
 dnf update -y --refresh
 dnf install -y $packages
 
-
-echo "\nSetting up: flatpak packages"
+echo
+echo "Setting up: flatpak packages"
 flatpak update -y
 flatpak install -y $flatpaks
 
-echo "\nSetting up: rust-lang"
+echo
+echo "Setting up: rust-lang"
 sudo -u $SUDO_USER sh -c "wget -qO- https://sh.rustup.rs | sh -s -- -y"
 
-echo ""
+echo
 # Ryujinx - just download latest version and extract
 (
 ryujinx_folder="/home/$SUDO_USER/Downloads/ryujinx"
@@ -164,16 +167,15 @@ rm -r /tmp/jetbrains*
 )&
 
 # fonts
-echo "Installing fonts!"
 font_folder="/home/$SUDO_USER/.local/share/fonts/"
 for font in $fonts
 do
 	(
-	echo "Downloading font: $font"
+	echo "Downloading: $font (font)"
 	wget -cqO /tmp/$font.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$font.zip
 	sudo -u $SUDO_USER mkdir -p $font_folder/$font
-	echo "Unpacking font: $font"
-	unzip -C /tmp/$font.zip -x readme* license* -d $font_folder/$font
+	echo "Unpacking: $font (font)"
+	unzip -Cq /tmp/$font.zip -x readme* license* -d $font_folder/$font
 	rm -r /tmp/$font*
 	)&
 done
