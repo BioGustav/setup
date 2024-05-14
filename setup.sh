@@ -32,6 +32,7 @@ packages="
 	code
 	dnf-plugins-core
 	evince
+	fastfetch
 	firefox
 	gcc
 	gh
@@ -42,7 +43,6 @@ packages="
 	micro
 	mupdf
 	mpv
-	neofetch
 	obs-studio
 	pdfarranger
 	speedtest-cli
