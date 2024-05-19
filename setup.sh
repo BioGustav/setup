@@ -25,13 +25,13 @@ ascs="
 
 # remove akmod-nvidia and xorg-x11-drv-nvidia-cuda if not using nvidia
 packages="
-	akmod-nvidia
 	bat
 	brave-browser
 	btop
 	code
 	dnf-plugins-core
 	evince
+ 	eza
 	fastfetch
 	firefox
 	gcc
@@ -43,15 +43,19 @@ packages="
 	micro
 	mupdf
 	mpv
+ 	neovim
 	obs-studio
 	pdfarranger
+ 	ripgrep
 	speedtest-cli
 	steam
 	tldr
 	virt-manager
 	xclip
+	z
+ 	zsh
+	akmod-nvidia
 	xorg-x11-drv-nvidia-cuda
-	zsh
 "
 #	texlive-scheme-full
 
