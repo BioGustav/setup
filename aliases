@@ -1,16 +1,40 @@
 alias c="clear"
 alias cat="bat"
+alias ls="ls --color"
+alias l="ls -lAh"
+alias z="zoxide query"
+
+# dnf
 alias dnfs="dnf search"
 alias dnfl="dnf list"
 alias dnfi="sudo dnf install"
 alias dnfr="sudo dnf remove"
 alias dnfu="sudo dnf upgrade && flatpak upgrade"
 alias dnfur="sudo dnf upgrade --refresh && flatpak upgrade"
+alias dnfury="sudo dnf upgrade --refresh -y && flatpak upgrade -y"
 alias s=dnfs
 alias i=dnfi
 alias r=dnfr
 alias u=dnfur
+alias uy=dnfury
+
+# clipboard
 alias clipboard="xclip -selection clipboard"
 alias cclip="xclip -rmlastnl -selection clipboard"
 alias pclip="xclip -out -selection clipboard"
+
+# oh-my-posh
 alias oh-my-posh-update="curl -s https://ohmyposh.dev/install.sh | sudo bash -s"
+
+# nvim
+alias vi=nvim
+alias vim=nvim
+ci() {
+    p=$(z $1)
+        cd $p
+        vi .
+}
+
+# docker
+alias up="docker compose up -d"
+alias down="docker compose down && docker rmi \$(docker images -q)"
