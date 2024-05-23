@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if (( $EUID != 0 )); then
+if [ $EUID != 0 ]; then
   echo "Please run as root"
   exit 1
 else
@@ -53,12 +53,12 @@ packages="
     tldr
     virt-manager
     xclip
-    z
+    zoxide
     zsh
 "
 
 read -rp "Do you want to install NVIDIA-drivers [Y/n]: " yn
-if [ "$yn" == "${yn#[Nn]}" ]; then
+if [ $yn == ${yn#[Nn]} ]; then
     packages=$packages"
         akmod-nvidia
         xorg-x11-drv-nvidia-cuda
@@ -66,7 +66,7 @@ if [ "$yn" == "${yn#[Nn]}" ]; then
 fi
 
 read -rp "Do you want to install texlive-scheme-full [y/N]: " yn
-if [ "$yn" != "${yn#[Yy]}" ]; then
+if [ $yn != ${yn#[Yy]} ]; then
     packages=$packages"
         texlive-scheme-full
     "
@@ -110,7 +110,7 @@ flatpaks="
 "
 
 read -rp "Do you want to install OnlyOffice [y/N]: " yn
-if [ "$yn" != "${yn#[Yy]}" ]; then
+if [ $yn != ${yn#[Yy]} ]; then
     flatpaks=$flatpaks"
         org.onlyoffice.desktopeditors
     "
