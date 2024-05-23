@@ -5,18 +5,11 @@ alias l="ls -lAh"
 alias z="zoxide query"
 
 # dnf
-alias dnfs="dnf search"
-alias dnfl="dnf list"
-alias dnfi="sudo dnf install"
-alias dnfr="sudo dnf remove"
-alias dnfu="sudo dnf upgrade && flatpak upgrade"
-alias dnfur="sudo dnf upgrade --refresh && flatpak upgrade"
-alias dnfury="sudo dnf upgrade --refresh -y && flatpak upgrade -y"
-alias s=dnfs
-alias i=dnfi
-alias r=dnfr
-alias u=dnfur
-alias uy=dnfury
+alias s="dnf search"
+alias i="sudo dnf install"
+alias r="sudo dnf remove"
+alias u="sudo dnf upgrade --refresh && flatpak upgrade"
+alias uy="sudo dnf upgrade --refresh -y && flatpak upgrade -y"
 
 # clipboard
 alias clipboard="xclip -selection clipboard"

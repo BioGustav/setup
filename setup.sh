@@ -29,6 +29,8 @@ packages="
     btop
     code
     dnf-plugins-core
+    docker
+    docker-compose
     evince
     eza
     fastfetch
@@ -75,6 +77,7 @@ remove_packages="
     cheese
     dragon
     gnome-boxes
+    gnome-contacts
     gnome-maps
     gnome-tour
     gnome-weather
@@ -105,6 +108,13 @@ flatpaks="
     org.mozilla.Thunderbird
     org.signal.Signal
 "
+
+read -p "Do you want to install OnlyOffice [y/N]: " yn
+if [ "$yn" != ${yn#[Yy]} ]; then
+    flatpaks=$flatpaks"
+        org.onlyoffice.desktopeditors
+    "
+fi
 
 # fonts: https://www.nerdfonts.com/font-downloads
 fonts="

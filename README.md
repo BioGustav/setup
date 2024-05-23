@@ -16,7 +16,7 @@ I only tested it on Fedora 40 Workstation/KDE (in a VM).
 
 ## Usage
 **STOP!**\
-Before running a script from any source, **read** it through and be sure it does not do anything bad!
+Before running a script from any source, **read** it through and be sure it does no harm!
 
 Now that that's said, let's continue.\
 Run this command in your terminal to download and run the script:
@@ -25,64 +25,117 @@ curl -sL https://raw.githubusercontent.com/BioGustav/main/setup.sh | sudo sh
 ```
 
 ## Installed packages
-Optional packages have checkboxes (marked &rarr; default=yes)
-### DNF:
-* bat
-* brave-browser
-* btop
-* code
-* dnf-plugins-core
-* evince
-* eza
-* fastfetch
-* firefox
-* gcc
-* gh
-* git
-* java-latest-openjdk
-* kate
-* mangohud
-* micro
-* mupdf
-* mpv
-* neovim
-* obs-studio
-* pdfarranger
-* ripgrep
-* speedtest-cli
-* steam
-* tldr
-* virt-manager
-* xclip
-* z
-* zsh
-
-* [x] akmod-nvidia
-* [x] xorg-x11-drv-nvidia-cuda
-* [ ] texlive-scheme-full
+Optional packages have checkboxes. A marked box means, that by default it will be installed.
+When running the script you will be asked if you want them.
+### DNF
+* [x] [akmod-nvidia](https://www.nvidia.com/)
+* [bat](https://crates.io/crates/bat/)
+* [brave-browser](https://brave.com/)
+* [btop](https://github.com/aristocratos/btop/)
+* [code](https://code.visualstudio.com/)
+* [dnf-plugins-core](https://github.com/rpm-software-management/dnf-plugins-core/)
+* [docker](https://www.docker.com/)
+* [docker-compose](https://github.com/docker/compose/)
+* [evince](https://wiki.gnome.org/Apps/Evince/)
+* [eza](https://crates.io/crates/eza/)
+* [fastfetch](https://github.com/fastfetch-cli/fastfetch/)
+* [firefox](https://www.mozilla.org/firefox/)
+* [gcc](https://gcc.gnu.org/)
+* [gh](https://cli.github.com/)
+* [git](https://git-scm.com/)
+* [java-latest-openjdk](https://openjdk.java.net/)
+* [kate](https://apps.kde.org/kate/)
+* [mangohud](https://github.com/flightlessmango/MangoHud/)
+* [micro](https://micro-editor.github.io/)
+* [mpv](https://mpv.io/)
+* [mupdf](https://mupdf.com/)
+* [ncdu](https://dev.yorhel.nl/ncdu/)
+* [nmap](https://nmap.org/)
+* [neovim](https://neovim.io/)
+* [obs-studio](https://obsproject.com/)
+* [pdfarranger](https://github.com/pdfarranger/pdfarranger/)
+* [ripgrep](https://crates.io/crates/ripgrep/)
+* [speedtest-cli](https://github.com/sivel/speedtest-cli/)
+* [steam](https://steampowered.com/)
+* [ ] [texlive-scheme-full](http://tug.org/texlive/)
+* [tldr](https://github.com/tldr-pages/tldr-python-client/)
+* [virt-manager](https://virt-manager.org/)
+* [x] [xorg-x11-drv-nvidia-cuda](https://www.nvidia.com/)
+* [xclip](http://sourceforge.net/projects/xclip/)
+* [zoxide](https://crates.io/crates/zoxide/)
+* [zsh](https://www.zsh.org/)
 
 ### Flatpak
-* Bitwarden
-* Discord
-* Flatseal
-* Spotify
-* Obsidian
-* ProtonUpGUI
-* Thunderbird
-* Signal
+* [Bitwarden](https://bitwarden.com/)
+* [Discord](https://discord.com/)
+* [Flatseal](https://github.com/tchx84/Flatseal/)
+* [Obsidian](https://obsidian.md/)
+* [ ] [OnlyOffice](https://www.onlyoffice.com/)
+* [ProtonUpGUI](https://github.com/DavidoTek/ProtonUp-Qt/)
+* [Signal](https://signal.org/)
+* [Spotify](https://spotify.com/)
+* [Thunderbird](https://www.thunderbird.net/)
 
 ### Other
-* Jetbrains Toolbox - (official "installer")
-* RustUp - (official install script)
+* [Jetbrains Toolbox](https://www.jetbrains.com/toolbox-app/) - (official "installer")
+* [RustUp](https://rustup.rs/) - (official install script)
+* [zinit](https://github.com/zdharma-continuum/zinit/)
+* [powerlevel10k](https://github.com/romkatv/powerlevel10k/)
 
-### Removed
+## Removed packages
+* akregator
+* cheese
+* dragon
+* gnome-boxes
+* gnome-contacts
+* gnome-maps
+* gnome-tour
+* gnome-weather
+* elisa-player
+* libreoffice-*
+* kaddressbook
+* kamaso
+* kmahjongg
+* kmines
+* kmail
+* kpat
+* kolourpaint
+* konversation
+* korganizer
+* rhythmbox
+* simple-scan
+* totem
+* yelp
 
-### Downloaded only
+## Downloaded only
 These packages/binaries/scripts are only downloaded, but **not** installed/run.
-* Ryujinx
-* CodeNewRoman Nerd Font
-* RobotoMono Nerd Font
+* [CodeNewRoman Nerd Font](https://www.nerdfonts.com/font-downloads/)
+* [RobotoMono Nerd Font](https://www.nerdfonts.com/font-downloads/)
+* [Ryujinx](https://github.com/Ryujinx/Ryujinx/)
 
 ## Alias
+basic:
+* `c` - `clear`
+* `cat` - `bat`
+* `l` - `ls -lAh`
+* `ls` - `ls --color`
+* `vim` - `nvim`
+* `z` - `zoxide query`
+
+dnf:
+* `s` - `dnf search`
+* `i` - `sudo dnf install`
+* `r` - `sudo dnf remove`
+* `u` - `sudo dnf upgrade --refresh && flatpak upgrade`
+* `uy` - `sudo dnf upgrade --refresh -y && flatpak upgrade -y`
+
+copy-pasta:
+* `clipboard` - `xclip -selection clipboard`
+* `cclip` - `xclip -rmlastnl -selection clipboard`
+* `pclip` - `xclip -out -selection clipboard`
+
+docker compose:
+* `up` - `docker compose up -d`
+* `down` - `docker compose down && docker rmi \$(docker images -q)`
 
 ## Configurations
