@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if (( $EUID != 0 )); then
   echo "Please run as root"
@@ -57,16 +57,16 @@ packages="
     zsh
 "
 
-read -p "Do you want to install NVIDIA-drivers [Y/n]: " yn
-if [ "$yn" == ${yn#[Nn]} ]; then
+read -rp "Do you want to install NVIDIA-drivers [Y/n]: " yn
+if [ "$yn" == "${yn#[Nn]}" ]; then
     packages=$packages"
         akmod-nvidia
         xorg-x11-drv-nvidia-cuda
     "
 fi
 
-read -p "Do you want to install texlive-scheme-full [y/N]: " yn
-if [ "$yn" != ${yn#[Yy]} ]; then
+read -rp "Do you want to install texlive-scheme-full [y/N]: " yn
+if [ "$yn" != "${yn#[Yy]}" ]; then
     packages=$packages"
         texlive-scheme-full
     "
@@ -109,8 +109,8 @@ flatpaks="
     org.signal.Signal
 "
 
-read -p "Do you want to install OnlyOffice [y/N]: " yn
-if [ "$yn" != ${yn#[Yy]} ]; then
+read -rp "Do you want to install OnlyOffice [y/N]: " yn
+if [ "$yn" != "${yn#[Yy]}" ]; then
     flatpaks=$flatpaks"
         org.onlyoffice.desktopeditors
     "
