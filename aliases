@@ -23,17 +23,8 @@ alias clipboard="xclip -selection clipboard"
 alias cclip="xclip -rmlastnl -selection clipboard"
 alias pclip="xclip -out -selection clipboard"
 
-# oh-my-posh
-alias oh-my-posh-update="curl -s https://ohmyposh.dev/install.sh | sudo bash -s"
-
 # nvim
-alias vi=nvim
 alias vim=nvim
-ci() {
-    p=$(z $1)
-        cd $p
-        vi .
-}
 
 # docker
 alias up="docker compose up -d"
