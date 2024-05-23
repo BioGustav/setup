@@ -21,7 +21,7 @@ Before running a script from any source, **read** it through and be sure it does
 Now that that's said, let's continue.\
 Run this command in your terminal to download and run the script:
 ```
-curl -sL https://raw.githubusercontent.com/BioGustav/main/setup.sh | sudo sh
+curl -sL https://raw.githubusercontent.com/BioGustav/setup/wip/setup.sh | sudo bash
 ```
 
 ## Installed packages
