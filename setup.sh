@@ -37,12 +37,13 @@ packages="
     gh
     git
     java-latest-openjdk
-    kate
     mangohud
     micro
     mupdf
     mpv
+    ncdu
     neovim
+    nmap
     obs-studio
     pdfarranger
     ripgrep
