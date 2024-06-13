@@ -206,8 +206,13 @@ done
 # dotfiles
 (
 echo "Downloading: dotfiles"
-git clone --depth 1 git@github.com:biogustav/dotfiles /home/$SUDO_USER/dotfiles
+git clone --depth 1 https://github.com/BioGustav/dotfiles /home/$SUDO_USER/dotfiles
 sudo -u $SUDO_USER stow /home/$SUDO_USER/dotfiles
+)&
+
+# oh-my-posh
+(
+curl -s https://ohmyposh.dev/install.sh | bash -s
 )&
 
 wait
