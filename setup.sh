@@ -29,8 +29,6 @@ packages="
     btop
     code
     dnf-plugins-core
-    docker
-    docker-compose
     evince
     eza
     fastfetch
@@ -50,6 +48,7 @@ packages="
     ripgrep
     speedtest-cli
     steam
+    stow
     tldr
     virt-manager
     xclip
@@ -204,14 +203,15 @@ do
     )&
 done
 
+# dotfiles
+(
+echo "Downloading: dotfiles"
+git clone --depth 1 git@github.com:biogustav/dotfiles /home/$SUDO_USER/dotfiles
+sudo -u $SUDO_USER stow /home/$SUDO_USER/dotfiles
+)&
 
 wait
 
-# zsh
-cp ./zshrc /home/$SUDO_USER/.zshrc &
-cp ./aliases /home/$SUDO_USER/.config/ &
-
-wait 
 echo "Setting up zsh as standard shell"
 chsh -s $(which zsh) $SUDO_USER
 

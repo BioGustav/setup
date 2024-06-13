@@ -19,10 +19,7 @@ I only tested it on Fedora 40 Workstation/KDE (in a VM).
 Before running a script from any source, **read** it through and be sure it does no harm!
 
 Now that that's said, let's continue.\
-Run this command in your terminal to download and run the script:
-```
-curl -sL https://raw.githubusercontent.com/BioGustav/setup/wip/setup.sh | sudo bash
-```
+Clone the repo and run `setup.sh`.
 
 ## Installed packages
 Optional packages have checkboxes. A marked box means, that by default it will be installed.
@@ -34,8 +31,6 @@ When running the script you will be asked if you want them.
 * [btop](https://github.com/aristocratos/btop/)
 * [code](https://code.visualstudio.com/)
 * [dnf-plugins-core](https://github.com/rpm-software-management/dnf-plugins-core/)
-* [docker](https://www.docker.com/)
-* [docker-compose](https://github.com/docker/compose/)
 * [evince](https://wiki.gnome.org/Apps/Evince/)
 * [eza](https://crates.io/crates/eza/)
 * [fastfetch](https://github.com/fastfetch-cli/fastfetch/)
@@ -57,6 +52,7 @@ When running the script you will be asked if you want them.
 * [ripgrep](https://crates.io/crates/ripgrep/)
 * [speedtest-cli](https://github.com/sivel/speedtest-cli/)
 * [steam](https://steampowered.com/)
+* [stow](https://www.gnu.org/software/stow/stow.html)
 * [ ] [texlive-scheme-full](http://tug.org/texlive/)
 * [tldr](https://github.com/tldr-pages/tldr-python-client/)
 * [virt-manager](https://virt-manager.org/)
@@ -78,9 +74,9 @@ When running the script you will be asked if you want them.
 
 ### Other
 * [Jetbrains Toolbox](https://www.jetbrains.com/toolbox-app/) - (official "installer")
+* [oh-my-posh](https://ohmyposh.dev/)
 * [RustUp](https://rustup.rs/) - (official install script)
 * [zinit](https://github.com/zdharma-continuum/zinit/)
-* [powerlevel10k](https://github.com/romkatv/powerlevel10k/)
 
 ## Removed packages
 * akregator
@@ -134,8 +130,5 @@ copy-pasta:
 * `cclip` - `xclip -rmlastnl -selection clipboard`
 * `pclip` - `xclip -out -selection clipboard`
 
-docker compose:
-* `up` - `docker compose up -d`
-* `down` - `docker compose down && docker rmi \$(docker images -q)`
-
 ## Configurations
+All configs are cloned from the [dotfiles-repo](https://github.com/biogustav/dotfiles).
